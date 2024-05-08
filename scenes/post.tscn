@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://dess88qtrfkil"]
+
+[ext_resource type="Script" path="res://scripts/post.gd" id="1_5sq4f"]
+
+[node name="Post" type="PanelContainer"]
+script = ExtResource("1_5sq4f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="ContentContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PostArtists" type="Label" parent="MarginContainer/ContentContainer"]
+layout_mode = 2
+
+[node name="Rating" type="Label" parent="MarginContainer/ContentContainer"]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="MarginContainer/ContentContainer"]
+layout_mode = 2
+expand_mode = 5
+
+[node name="Interactions" type="HBoxContainer" parent="MarginContainer/ContentContainer"]
+layout_mode = 2
+
+[node name="Votes" type="HBoxContainer" parent="MarginContainer/ContentContainer/Interactions"]
+layout_mode = 2
+
+[node name="UpvoteButton" type="Button" parent="MarginContainer/ContentContainer/Interactions/Votes"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="MarginContainer/ContentContainer/Interactions/Votes"]
+layout_mode = 2
+
+[node name="DownvoteButton" type="Button" parent="MarginContainer/ContentContainer/Interactions/Votes"]
+layout_mode = 2
+
+[node name="FavouriteButton" type="Button" parent="MarginContainer/ContentContainer/Interactions"]
+layout_mode = 2
+
+[node name="ShareButton" type="Button" parent="MarginContainer/ContentContainer/Interactions"]
+layout_mode = 2
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_completed"]
