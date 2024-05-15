@@ -18,15 +18,15 @@ func _on_submit_button_pressed() -> void:
 		login_status.text = "incomplete details"
 		return
 	
-	var url: String = "%s/" % Info.ROOT_URL
-	var headers: PackedStringArray = PackedStringArray(["User-Agent: %s" % Info.USER_AGENT])
+	var url: String = '%s/' % Info.ROOT_URL
+	var headers: PackedStringArray = PackedStringArray(['User-Agent: %s' % Info.USER_AGENT])
 	
 	var parameters: PackedStringArray = PackedStringArray([
-		"api_key=%s" % api_key,
-		"login=%s" % username,
+		'api_key=%s' % api_key,
+		'login=%s' % username,
 	])
 	
-	http_request.request(url + "?" + "&".join(parameters), headers)
+	http_request.request(url + '?' + '&'.join(parameters), headers)
 
 
 func _on_http_request_completed(_result: int, response_code: int, _headers: PackedStringArray, _body: PackedByteArray) -> void:
@@ -37,4 +37,4 @@ func _on_http_request_completed(_result: int, response_code: int, _headers: Pack
 		
 		queue_free()
 	else:
-		login_status.text = "invalid details"
+		login_status.text = 'invalid details'

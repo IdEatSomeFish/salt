@@ -32,19 +32,19 @@ func _ready() -> void:
 	content_container.custom_minimum_size.x = POST_WIDTH
 	image_rect.custom_minimum_size.y = image_aspect_ratio * POST_WIDTH
 	
-	artists_label.text = " • ".join(artists)
+	artists_label.text = ' • '.join(artists)
 	score_label.text = str(score)
 	favourite_button.text = str(favourite_count)
 	
 	match rating:
 		Info.PostRating.SAFE:
-			rating_label.text = "safe"
+			rating_label.text = 'safe'
 		Info.PostRating.QUESTIONABLE:
-			rating_label.text = "questionable"
+			rating_label.text = 'questionable'
 		Info.PostRating.EXPLICIT:
-			rating_label.text = "explicit"
+			rating_label.text = 'explicit'
 	
-	if file_extension == "png" or file_extension == "jpg":
+	if file_extension == 'png' or file_extension == 'jpg':
 		request_image()
 	else:
 		queue_free()
@@ -52,9 +52,9 @@ func _ready() -> void:
 
 func _on_http_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	match file_extension:
-		"png":
+		'png':
 			image.load_png_from_buffer(body)
-		"jpg":
+		'jpg':
 			image.load_jpg_from_buffer(body)
 	
 	image_rect.texture = ImageTexture.create_from_image(image)
